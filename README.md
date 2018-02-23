@@ -16,15 +16,19 @@
 ###	注意:
 使用前请将 weixin 、 alipay 字段添加到info.plist白名单
 
+### 运行Demo注意事项:
+由于demo拉起支付时,未传递真实支付参数,所以并不能真正进行支付,请替换为真实订单参数即可(这些参数在后台进行订单签名时,由后台生成).
+
 ##	代码示例
 
 ###	1.微信支付
 ```objc
 
 //微信支付参数,下面7个参数,由后台签名订单后生成,并返回给客服端(与官方SDK一致)
+//注意:请将下面参数设置为你自己真实订单签名后服务器返回参数,便可进行实际支付
 NSDictionary *orderDict = @{@"appid":@"",@"partnerid":@"",@"prepayid":@"",@"noncestr":@"",@"timestamp":@"",@"package":@"",@"sign":@""};
         
-/** 传入订单信息,拉起微信支付 */
+//传入订单信息,拉起微信支付
 [[XHPayKit defaultManager] wxpayOrder:orderDict completed:^(NSDictionary *resultDict) {
      NSLog(@"支付结果:\n%@",resultDict);
      NSInteger code = [resultDict[@"code"] integerValue];
@@ -36,13 +40,14 @@ NSDictionary *orderDict = @{@"appid":@"",@"partnerid":@"",@"prepayid":@"",@"nonc
         
 ```
 
-###	2..支付宝支付
+###	2.支付宝支付
 ```objc
 
-/** 支付宝订单签名,此签名由后台签名订单后生成,并返回给客户端(与官方SDK一致) */
+//支付宝订单签名,此签名由后台签名订单后生成,并返回给客户端(与官方SDK一致)
+//注意:请将下面值设置为你自己真实订单签名,便可进行实际支付
 NSString *orderSign = @"很长的一串支付宝订单签名";
         
-/** 传入支付宝订单签名 和 自己App URL Scheme,拉起支付宝支付 */
+//传入支付宝订单签名 和 自己App URL Scheme,拉起支付宝支付
 [[XHPayKit defaultManager] alipayOrder:orderSign fromScheme:@"XHPayKitExample" completed:^(NSDictionary *resultDict) {
     NSLog(@"支付结果:\n%@",resultDict);
     NSInteger status = [resultDict[@"ResultStatus"] integerValue];
