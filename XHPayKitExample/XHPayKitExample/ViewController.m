@@ -21,7 +21,7 @@
     
     [self.view addSubview:self.tableView];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示:\n请替换支付参数为真实数据,便可进行实际支付" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示:\n请替换支付参数为真实数据,\n并在URL Types中添加微信回调URL Schemes,\n便可进行实际支付" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
 
