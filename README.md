@@ -14,9 +14,9 @@
 3.本库使用时,不需要配置微信等平台appid等信息,服务端配置就可以了,因为后台签名订单时会返回appid等信息给客户端.
 
 ###	注意:
-1.使用前请将 weixin 、 alipay 字段添加到info.plist白名单
+1.使用前请将 weixin 、 alipay 字段添加到info.plist白名单<br>
 2.并添加两个URL Schemes 如图:
-![](/URL Schemes说明.png)
+![](URL Schemes说明.png)
 
 ### 运行Demo注意事项:
 由于demo拉起支付时,未传递真实支付参数,所以并不能真正进行支付,请替换为真实订单参数即可(这些参数由后台进行订单签名时生成并返回给客户端).
