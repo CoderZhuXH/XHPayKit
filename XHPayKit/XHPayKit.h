@@ -21,7 +21,7 @@
 
  @return 已安装YES,未安装NO
  */
-+(BOOL)isWXAppInstalled;
++(BOOL)isWxAppInstalled;
 
 /**
  是否安装支付宝

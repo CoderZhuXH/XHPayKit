@@ -4,7 +4,7 @@
 //
 //  Created by zhuxiaohui on 2018/2/23.
 //  Copyright © 2018年 it7090.com. All rights reserved.
-//
+//  代码地址:https://github.com/CoderZhuXH/XHPayKit
 
 #import "XHPayKit.h"
 #import "NSString+XHPayKit.h"
@@ -27,11 +27,11 @@
 }
 
 +(BOOL)isAliAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alipay://"]];
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:AliUrlPrefix]];
 }
 
-+(BOOL)isWXAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]];
++(BOOL)isWxAppInstalled{
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WxUrlPrefix]];
 }
 
 -(void)alipayOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock{
@@ -51,7 +51,7 @@
     }
     NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":@"SafePay",@"dataString":orderStr};
     NSString *dictEncodeString = dict.xh_jsonString.xh_URLEncodedString;
-    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",@"alipay://",@"alipayclient/?",dictEncodeString];
+    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",AliUrlPrefix,@"alipayclient/?",dictEncodeString];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -63,7 +63,7 @@
         XHPayKitLog(@"缺少orderDict参数");
         return;
     }
-    if(![self.class isWXAppInstalled]){
+    if(![self.class isWxAppInstalled]){
         XHPayKitLog(@"未安装微信");
         NSDictionary *resultDict = @{@"code":@(-1000),@"msg":@"未安装微信"};
         if(completedBlock) completedBlock(resultDict);
@@ -109,7 +109,7 @@
     package = [package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
     NSString * sign = [orderDict objectForKey:@"sign"];
     NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%@&sign=%@&signType=%@",nonceStr,package,partnerId,prepayId,timeStamp,sign,@"SHA1"];
-    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",@"weixin://",wxAppid,parameter];
+    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,wxAppid,parameter];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }

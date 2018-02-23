@@ -43,7 +43,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     if(indexPath.row == 0){//微信支付
-        if(![XHPayKit isWXAppInstalled]){
+        if(![XHPayKit isWxAppInstalled]){
             NSLog(@"未安装微信");
             return;
         }

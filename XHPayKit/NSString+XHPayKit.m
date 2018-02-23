@@ -4,7 +4,7 @@
 //
 //  Created by zhuxiaohui on 2018/2/23.
 //  Copyright © 2018年 it7090.com. All rights reserved.
-//
+//  代码地址:https://github.com/CoderZhuXH/XHPayKit
 
 #import "NSString+XHPayKit.h"
 
@@ -14,6 +14,7 @@
     NSData *JSONData = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
     return [NSJSONSerialization JSONObjectWithData:JSONData options:NSJSONReadingMutableLeaves error:nil];
 }
+
 -(NSString *)xh_URLEncodedString{
     NSString *string = self;
     NSString *encodedString = (NSString *) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,

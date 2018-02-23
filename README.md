@@ -90,7 +90,7 @@ NSString *orderSign = @"很长的一串支付宝订单签名";
 
  @return 已安装YES,未安装NO
  */
-+(BOOL)isWXAppInstalled;
++(BOOL)isWxAppInstalled;
 
 /**
  是否安装支付宝

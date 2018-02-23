@@ -15,6 +15,8 @@
 #define XHPayKitLog(...)
 #endif
 
+#define AliUrlPrefix  [NSString stringWithFormat:@"alipay%@",@"://"]
+#define WxUrlPrefix   [NSString stringWithFormat:@"weixin%@",@"://"]
 
 
 
