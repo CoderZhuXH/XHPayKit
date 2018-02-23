@@ -3,10 +3,11 @@
 //  XHPayKitExample
 //
 //  Created by zhuxiaohui on 2018/2/9.
-//  Copyright © 2018年 FORWARD. All rights reserved.
+//  Copyright © 2018年 it7090.com. All rights reserved.
 //
 
 #import "AppDelegate.h"
+#import "XHPayKit.h"
 
 @interface AppDelegate ()
 
@@ -16,8 +17,30 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    
     return YES;
+}
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
+/** iOS9及以后 */
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey, id> *)options
+{
+    BOOL result = [[XHPayKit defaultManager] handleOpenURL:url];
+    if (!result) {//这里处理其他SDK(例如QQ登录,微博登录等)
+        
+    }
+    return result;
+}
+#endif
+/** iOS9以下 */
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    BOOL result = [[XHPayKit defaultManager] handleOpenURL:url];
+    if (!result) {//这里处理其他SDK(例如QQ登录,微博登录等)
+        
+    }
+    return result;
 }
 
 

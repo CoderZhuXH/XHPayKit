@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60010A9F203FA856002DF684 /* XHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60010A9E203FA856002DF684 /* XHPayKit.m */; };
+		60010AA2203FA89C002DF684 /* NSString+XHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60010AA1203FA89C002DF684 /* NSString+XHPayKit.m */; };
+		60010AA5203FA9A9002DF684 /* XHPayKitConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 60010AA4203FA9A9002DF684 /* XHPayKitConst.m */; };
+		60010AAC203FAFCF002DF684 /* NSDictionary+XHPayKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60010AAB203FAFCF002DF684 /* NSDictionary+XHPayKit.m */; };
 		60518D2A202DB523008608FD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60518D29202DB523008608FD /* AppDelegate.m */; };
 		60518D2D202DB523008608FD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60518D2C202DB523008608FD /* ViewController.m */; };
 		60518D30202DB523008608FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60518D2E202DB523008608FD /* Main.storyboard */; };
@@ -16,6 +20,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60010A9D203FA856002DF684 /* XHPayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPayKit.h; sourceTree = "<group>"; };
+		60010A9E203FA856002DF684 /* XHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPayKit.m; sourceTree = "<group>"; };
+		60010AA0203FA89C002DF684 /* NSString+XHPayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+XHPayKit.h"; sourceTree = "<group>"; };
+		60010AA1203FA89C002DF684 /* NSString+XHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+XHPayKit.m"; sourceTree = "<group>"; };
+		60010AA3203FA9A9002DF684 /* XHPayKitConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XHPayKitConst.h; sourceTree = "<group>"; };
+		60010AA4203FA9A9002DF684 /* XHPayKitConst.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XHPayKitConst.m; sourceTree = "<group>"; };
+		60010AAA203FAFCF002DF684 /* NSDictionary+XHPayKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XHPayKit.h"; sourceTree = "<group>"; };
+		60010AAB203FAFCF002DF684 /* NSDictionary+XHPayKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XHPayKit.m"; sourceTree = "<group>"; };
 		60518D25202DB523008608FD /* XHPayKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHPayKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60518D28202DB523008608FD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		60518D29202DB523008608FD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -39,9 +51,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		60010A9C203FA78C002DF684 /* XHPayKit */ = {
+			isa = PBXGroup;
+			children = (
+				60010A9D203FA856002DF684 /* XHPayKit.h */,
+				60010A9E203FA856002DF684 /* XHPayKit.m */,
+				60010AA0203FA89C002DF684 /* NSString+XHPayKit.h */,
+				60010AA1203FA89C002DF684 /* NSString+XHPayKit.m */,
+				60010AAA203FAFCF002DF684 /* NSDictionary+XHPayKit.h */,
+				60010AAB203FAFCF002DF684 /* NSDictionary+XHPayKit.m */,
+				60010AA3203FA9A9002DF684 /* XHPayKitConst.h */,
+				60010AA4203FA9A9002DF684 /* XHPayKitConst.m */,
+			);
+			name = XHPayKit;
+			path = ../XHPayKit;
+			sourceTree = "<group>";
+		};
 		60518D1C202DB523008608FD = {
 			isa = PBXGroup;
 			children = (
+				60010A9C203FA78C002DF684 /* XHPayKit */,
 				60518D27202DB523008608FD /* XHPayKitExample */,
 				60518D26202DB523008608FD /* Products */,
 			);
@@ -144,7 +173,11 @@
 			files = (
 				60518D2D202DB523008608FD /* ViewController.m in Sources */,
 				60518D38202DB523008608FD /* main.m in Sources */,
+				60010AAC203FAFCF002DF684 /* NSDictionary+XHPayKit.m in Sources */,
 				60518D2A202DB523008608FD /* AppDelegate.m in Sources */,
+				60010A9F203FA856002DF684 /* XHPayKit.m in Sources */,
+				60010AA2203FA89C002DF684 /* NSString+XHPayKit.m in Sources */,
+				60010AA5203FA9A9002DF684 /* XHPayKitConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +251,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -267,7 +300,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -281,8 +314,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3VC3TP3LE9;
 				INFOPLIST_FILE = XHPayKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FORWARD.JinJiXueRen.XHPayKitExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.it7090.XHPayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -295,8 +329,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3VC3TP3LE9;
 				INFOPLIST_FILE = XHPayKitExample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.FORWARD.JinJiXueRen.XHPayKitExample;
+				PRODUCT_BUNDLE_IDENTIFIER = com.it7090.XHPayKitExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
