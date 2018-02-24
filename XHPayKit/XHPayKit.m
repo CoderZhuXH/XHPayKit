@@ -46,6 +46,7 @@
         return;
     }
     self.wxAppid = req.openID;
+    req.package = [req.package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
     NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%d&sign=%@&signType=%@",req.nonceStr,req.package,req.partnerId,req.prepayId,req.timeStamp,req.sign,@"SHA1"];
     NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,req.openID,parameter];
     if(completedBlock){
