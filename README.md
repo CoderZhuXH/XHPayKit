@@ -1,5 +1,5 @@
 #	XHPayKit 
-##	不用官方SDK进行微信支付、支付宝支付
+##	不用官方SDK,实现微信支付、支付宝支付
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://github.com/CoderZhuXH/XHPayKit)
 [![Version Status](https://img.shields.io/cocoapods/v/XHPayKit.svg?style=flat)](http://cocoadocs.org/docsets/XHPayKit)
