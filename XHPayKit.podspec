@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "XHPayKit"
   s.version      = "1.0.0"
-  s.summary      = "不用官方SDK,进行微信、支付宝支付."
+  s.summary      = "不用官方SDK实现微信、支付宝支付."
   s.homepage     = "https://github.com/CoderZhuXH/XHPayKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }
   s.authors      = { "Zhu Xiaohui" => "977950862@qq.com"}
