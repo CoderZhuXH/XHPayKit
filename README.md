@@ -9,13 +9,14 @@
 
 ##	写在最前
 
-1.此库拥有和官方SDK类似接口,可以直接替换官方SDK支付接口,如果你使用过官方SDK,那么转换为本库你只需花费极短时间<br>
+1.此库拥有和官方SDK相似的接口,可以直接替换官方SDK支付接口,如果你使用过官方SDK,那么转换为本库你只需花费极短时间<br>
 2.此库只有10kb大小,不用导入任何依赖库,便可实现微信支付、支付宝支付,如果你想为项目瘦身或由于某种原因,不想使用官方SDK实现支付功能,此库将是一个不错的选择.<br>
-3.本库使用时,不需要配置微信等平台appid等信息,服务端配置就可以了,因为后台签名订单时会返回appid等信息给客户端.
+3.本库使用时,不需要配置微信等平台appid等信息,服务端配置就可以了,支付不同于登录分享,参数均由后台生成,后台签名订单时会返回appid等信息给客户端.
 
 ###	注意:
-1.使用前请将 weixin 、 alipay 字段添加到info.plist白名单<br>
-2.并添加两个URL Schemes 如图:<br>
+1.先在微信、支付宝开放平台注册你的应用,并获得支付能力<br>
+2.导入此库,并请将 weixin 、 alipay 字段添加到info.plist白名单<br>
+3.并添加两个URL Schemes 如图:<br>
 ![](PNG/URLSchemes.png)
 
 ### 运行Demo注意事项:
@@ -28,15 +29,22 @@
 
 //微信支付参数,下面7个参数,由后台签名订单后生成,并返回给客服端(与官方SDK一致)
 //注意:请将下面参数设置为你自己真实订单签名后服务器返回参数,便可进行实际支付
-NSDictionary *orderDict = @{@"appid":@"",@"partnerid":@"",@"prepayid":@"",@"noncestr":@"",@"timestamp":@"",@"package":@"",@"sign":@""};
+XHPayWxReq *req = [[XHPayWxReq alloc] init];
+req.openID = @"";
+req.partnerId = @"";
+req.prepayId = @"";
+req.nonceStr = @"";
+req.timeStamp = 1518156229;
+req.package = @"";
+req.sign = @"";
         
-//传入订单信息,拉起微信支付
-[[XHPayKit defaultManager] wxpayOrder:orderDict completed:^(NSDictionary *resultDict) {
-     NSLog(@"支付结果:\n%@",resultDict);
-     NSInteger code = [resultDict[@"code"] integerValue];
-     if(code == 0){//支付成功
+//传入订单模型,拉起微信支付
+[[XHPayKit defaultManager] wxpayOrder:req completed:^(NSDictionary *resultDict) {
+      NSLog(@"支付结果:\n%@",resultDict);
+      NSInteger code = [resultDict[@"errCode"] integerValue];
+      if(code == 0){//支付成功
                 
-     }
+      }
 }];
 
         
@@ -52,7 +60,7 @@ NSString *orderSign = @"很长的一串支付宝订单签名";
 //传入支付宝订单签名 和 自己App URL Scheme,拉起支付宝支付
 [[XHPayKit defaultManager] alipayOrder:orderSign fromScheme:@"XHPayKitExample" completed:^(NSDictionary *resultDict) {
     NSLog(@"支付结果:\n%@",resultDict);
-    NSInteger status = [resultDict[@"ResultStatus"] integerValue];
+    NSInteger status = [resultDict[@"resultStatus"] integerValue];
     if(status == 9000){//支付成功
                 
     }
@@ -60,7 +68,8 @@ NSString *orderSign = @"很长的一串支付宝订单签名";
 
 ```
 
-###	 3.处理第三方支付跳回商户app携带的支付结果Url(在Appdelegate中添加以下代码)
+###	 3.在Appdelegate中添加以下代码 - 处理第三方支付跳回商户app携带的支付结果Url
+
 ```objc
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
 /** iOS9及以后 */
@@ -102,6 +111,47 @@ NSString *orderSign = @"很长的一串支付宝订单签名";
 +(BOOL)isAliAppInstalled;
 
 ```
+
+## 支付结果resultDict释义
+
+### 微信
+
+```objc
+{
+    "errCode":0,
+    "errStr":"成功"
+}
+
+//以下状态码含义与官方SDK一致
+errCode = 0,成功<br>
+errCode = -1,普通错误类型<br>
+errCode = -2,用户点击取消并返回<br>
+errCode = -3,发送失败<br>
+errCode = -4,授权失败 <br>
+errCode = -5,微信不支持<br>
+```
+
+### 支付宝
+
+```objc
+{
+    "result":"",
+    "resultStatus":"9000",
+    "memo":"支付成功"
+}
+
+//以下状态码含义与官方SDK一致
+resultStatus = 9000,支付成功<br>
+resultStatus = 8000,正在处理中，支付结果未知（有可能已经支付成功）,请查询商户订单列表中订单的支付状态<br>
+resultStatus = 4000,支付失败<br>
+resultStatus = 5000,重复请求<br>
+resultStatus = 6001,用户中途取消<br>
+resultStatus = 6002,网络连接出错<br>
+resultStatus = 6004,支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态<br>
+
+```
+
+
 ##  安装
 ### 1.手动添加:<br>
 *   1.将 XHPayKit 文件夹添加到工程目录中<br>

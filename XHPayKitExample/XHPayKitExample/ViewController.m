@@ -21,7 +21,7 @@
     
     [self.view addSubview:self.tableView];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示:\n请替换支付参数为真实数据,\n并在URL Types中添加微信回调URL Schemes,\n便可进行实际支付" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示:\n请替换支付参数为真实数据,\n便可进行实际支付" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
 
@@ -53,12 +53,19 @@
         
         //微信支付参数,下面7个参数,由后台签名订单后生成,并返回给客服端(与官方SDK一致)
         //注意:请将下面参数设置为你自己真实订单签名后服务器返回参数,便可进行实际支付
-        NSDictionary *orderDict = @{@"appid":@"",@"partnerid":@"",@"prepayid":@"",@"noncestr":@"",@"timestamp":@"",@"package":@"",@"sign":@""};
+        XHPayWxReq *req = [[XHPayWxReq alloc] init];
+        req.openID = @"";
+        req.partnerId = @"";
+        req.prepayId = @"";
+        req.nonceStr = @"";
+        req.timeStamp = 1518156229;
+        req.package = @"";
+        req.sign = @"";
         
-        //传入订单信息,拉起微信支付
-        [[XHPayKit defaultManager] wxpayOrder:orderDict completed:^(NSDictionary *resultDict) {
+        //传入订单模型,拉起微信支付
+        [[XHPayKit defaultManager] wxpayOrder:req completed:^(NSDictionary *resultDict) {
             NSLog(@"支付结果:\n%@",resultDict);
-            NSInteger code = [resultDict[@"code"] integerValue];
+            NSInteger code = [resultDict[@"errCode"] integerValue];
             if(code == 0){//支付成功
                 
             }
@@ -78,7 +85,7 @@
         //传入支付宝订单签名 和 自己App URL Scheme,拉起支付宝支付
         [[XHPayKit defaultManager] alipayOrder:orderSign fromScheme:@"XHPayKitExample" completed:^(NSDictionary *resultDict) {
             NSLog(@"支付结果:\n%@",resultDict);
-            NSInteger status = [resultDict[@"ResultStatus"] integerValue];
+            NSInteger status = [resultDict[@"resultStatus"] integerValue];
             if(status == 9000){//支付成功
                 
             }

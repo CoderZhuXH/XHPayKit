@@ -21,9 +21,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "XHPayWxReq.h"
 
 //注意:
-//使用前请将 weixin 、 alipay 字段添加到info.plist白名单
+//1.先在微信、支付宝开放平台注册你的应用,并获得支付能力
+//2.导入此库,并请将 weixin 、 alipay 字段添加到info.plist白名单
+//3.添加自己APP URL Schemes,和微信回调URL Schemes,详见README文档
 
 @interface XHPayKit : NSObject
 
@@ -46,10 +49,10 @@
 /**
  拉起微信支付
 
- @param orderDict 支付参数,这些参数由服务器签名订单后生成(此字典必选包含这些参数@{@"appid":@"",@"partnerid":@"",@"prepayid":@"",@"noncestr":@"",@"timestamp":@"",@"package":@"",@"sign":@""})
+ @param req 发起支付的消息模型
  @param completedBlock 结果回调
  */
--(void)wxpayOrder:(NSDictionary *)orderDict completed:(void(^)(NSDictionary *resultDict))completedBlock;
+-(void)wxpayOrder:(XHPayWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;
 
 /**
  拉起支付宝支付

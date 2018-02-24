@@ -26,12 +26,32 @@
     return instance;
 }
 
++(BOOL)isWxAppInstalled{
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WxUrlPrefix]];
+}
+
 +(BOOL)isAliAppInstalled{
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:AliUrlPrefix]];
 }
 
-+(BOOL)isWxAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WxUrlPrefix]];
+-(void)wxpayOrder:(XHPayWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;{
+    if(req == nil){
+        XHPayKitLog(@"缺少payReq参数");
+        return;
+    }
+    if(![self.class isWxAppInstalled]){
+        XHPayKitLog(@"未安装微信");
+        NSDictionary *resultDict = @{@"errCode":@(-1000),@"errStr":@"未安装微信"};
+        if(completedBlock) completedBlock(resultDict);
+        return;
+    }
+    self.wxAppid = req.openID;
+    NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%d&sign=%@&signType=%@",req.nonceStr,req.package,req.partnerId,req.prepayId,req.timeStamp,req.sign,@"SHA1"];
+    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,req.openID,parameter];
+    if(completedBlock){
+        self.completedBlock = [completedBlock copy];
+    }
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
 }
 
 -(void)alipayOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock{
@@ -45,7 +65,7 @@
     }
     if(![self.class isAliAppInstalled]){
         XHPayKitLog(@"未安装支付宝");
-        NSDictionary *resultDict = @{@"code":@(-1000),@"msg":@"未安装支付宝"};
+        NSDictionary *resultDict = @{@"result":@"",@"resultStatus":@(-1000),@"memo":@"未安装支付宝"};
         if(completedBlock) completedBlock(resultDict);
         return;
     }
@@ -58,67 +78,11 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
 }
 
--(void)wxpayOrder:(NSDictionary *)orderDict completed:(void(^)(NSDictionary *resultDict))completedBlock{
-    if(orderDict == nil){
-        XHPayKitLog(@"缺少orderDict参数");
-        return;
-    }
-    if(![self.class isWxAppInstalled]){
-        XHPayKitLog(@"未安装微信");
-        NSDictionary *resultDict = @{@"code":@(-1000),@"msg":@"未安装微信"};
-        if(completedBlock) completedBlock(resultDict);
-        return;
-    }
-    NSArray *keys = orderDict.allKeys;
-    if(![keys containsObject:@"appid"]){
-        XHPayKitLog(@"orderDict中缺少appid");
-        return;
-    }
-    if(![keys containsObject:@"partnerid"]){
-        XHPayKitLog(@"orderDict中缺少partnerid");
-        return;
-    }
-    if(![keys containsObject:@"prepayid"]){
-        XHPayKitLog(@"orderDict中缺少prepayid");
-        return;
-    }
-    if(![keys containsObject:@"noncestr"]){
-        XHPayKitLog(@"orderDict中缺少noncestr");
-        return;
-    }
-    if(![keys containsObject:@"timestamp"]){
-        XHPayKitLog(@"orderDict中缺少timestamp");
-        return;
-    }
-    if(![keys containsObject:@"package"]){
-        XHPayKitLog(@"orderDict中缺少package");
-        return;
-    }
-    if(![keys containsObject:@"sign"]){
-        XHPayKitLog(@"orderDict中缺少sign");
-        return;
-    }
-    
-    NSString *wxAppid  = [orderDict objectForKey:@"appid"];
-    self.wxAppid = wxAppid;
-    NSString * partnerId = [orderDict objectForKey:@"partnerid"];
-    NSString * prepayId = [orderDict objectForKey:@"prepayid"];
-    NSString * nonceStr = [orderDict objectForKey:@"noncestr"];
-    NSString * timeStamp = [orderDict objectForKey:@"timestamp"];
-    NSString * package = [orderDict objectForKey:@"package"];
-    package = [package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
-    NSString * sign = [orderDict objectForKey:@"sign"];
-    NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%@&sign=%@&signType=%@",nonceStr,package,partnerId,prepayId,timeStamp,sign,@"SHA1"];
-    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,wxAppid,parameter];
-    if(completedBlock){
-        self.completedBlock = [completedBlock copy];
-    }
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
-}
 -(BOOL)handleOpenURL:(NSURL *)url{
     NSString *urlString = url.absoluteString.xh_URLDecodedString;
     if ([urlString rangeOfString:@"//safepay/"].location != NSNotFound){
         NSString *resultStr = [[urlString componentsSeparatedByString:@"?"] lastObject];
+        resultStr = [resultStr stringByReplacingOccurrencesOfString:@"ResultStatus" withString:@"resultStatus"];
         NSDictionary *result = resultStr.xh_dictionary;
         NSDictionary *resultDict = result[@"memo"];
         if(self.completedBlock) self.completedBlock(resultDict);
@@ -126,25 +90,25 @@
     }
     if ([urlString rangeOfString:self.wxAppid].location != NSNotFound){
         NSArray *retArray =  [urlString componentsSeparatedByString:@"&"];
-        NSInteger retCode = -1;
-        NSString *msg = @"普通错误";
+        NSInteger errCode = -1;
+        NSString *errStr = @"普通错误";
         for (NSString *retStr in retArray) {
             if([retStr containsString:@"ret="]){
-                retCode = [[retStr stringByReplacingOccurrencesOfString:@"ret=" withString:@""] integerValue];
+                errCode = [[retStr stringByReplacingOccurrencesOfString:@"ret=" withString:@""] integerValue];
             }
         }
-        if(retCode == 0){
-            msg = @"成功";
-        }else if (retCode == -2){
-            msg = @"用户取消";
-        }else if (retCode == -3){
-            msg = @"发送失败";
-        }else if (retCode == -4){
-            msg = @"授权失败";
-        }else if (retCode == -5){
-            msg = @"微信不支持";
+        if(errCode == 0){
+            errStr = @"成功";
+        }else if (errCode == -2){
+            errStr = @"用户取消";
+        }else if (errCode == -3){
+            errStr = @"发送失败";
+        }else if (errCode == -4){
+            errStr = @"授权失败";
+        }else if (errCode == -5){
+            errStr = @"微信不支持";
         }
-        NSDictionary *resultDict = @{@"code":@(retCode),@"msg":msg};
+        NSDictionary *resultDict = @{@"errCode":@(errCode),@"errStr":errStr};
         if(self.completedBlock) self.completedBlock(resultDict);
         return YES;
     }
