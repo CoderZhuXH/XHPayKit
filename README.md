@@ -7,6 +7,8 @@
 [![Pod Platform](https://img.shields.io/cocoapods/p/XHPayKit.svg?style=flat)](http://cocoadocs.org/docsets/XHPayKit/)
 [![Pod License](https://img.shields.io/cocoapods/l/XHPayKit.svg?style=flat)](https://github.com/CoderZhuXH/XHPayKit/blob/master/LICENSE)
 
+![](PNG/weixin_alipay.png)
+
 ##	写在最前
 
 1.此库拥有和官方SDK相似的接口,可以直接替换官方SDK支付接口,如果你使用过官方SDK,那么转换为本库你只需花费极短时间<br>
