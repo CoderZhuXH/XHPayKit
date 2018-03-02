@@ -21,6 +21,9 @@
 3.并添加两个URL Schemes 如图:<br>
 ![](PNG/URLSchemes.png)
 
+
+### 如果你的APP因为审核时支付作弊被拒,[请看这里>>>](https://github.com/CoderZhuXH/XHPayKit/blob/master/审核防检测到支付功能版本/README.md)
+
 ### 运行Demo注意事项:
 由于demo拉起支付时,未传递真实支付参数,所以并不能真正进行支付,请替换为真实订单参数即可(这些参数由后台进行订单签名时生成并返回给客户端).
 
