@@ -1,27 +1,27 @@
 //
-//  XHPayKit.m
-//  XHPayKitExample
+//  XHPKit.m
+//  XHPKitExample
 //
 //  Created by zhuxiaohui on 2018/2/23.
 //  Copyright © 2018年 it7090.com. All rights reserved.
-//  代码地址:https://github.com/CoderZhuXH/XHPayKit
+//  GitHub:https://github.com/CoderZhuXH
 
-#import "XHPayKit.h"
-#import "NSString+XHPayKit.h"
-#import "NSDictionary+XHPayKit.h"
-#import "XHPayKitConst.h"
+#import "XHPKit.h"
+#import "NSString+XHPKit.h"
+#import "NSDictionary+XHPKit.h"
+#import "XHPKitConst.h"
 
-@interface XHPayKit()
+@interface XHPKit()
 @property (nonatomic, copy) void(^completedBlock)(NSDictionary *resultDict);
 @property (nonatomic, copy) NSString *wxAppid;
 @end
 
-@implementation XHPayKit
+@implementation XHPKit
 +(instancetype)defaultManager{
     static dispatch_once_t onceToken;
-    static XHPayKit *instance;
+    static XHPKit *instance;
     dispatch_once(&onceToken, ^{
-        instance = [[XHPayKit alloc] init];
+        instance = [[XHPKit alloc] init];
     });
     return instance;
 }
@@ -34,15 +34,13 @@
     return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:AliUrlPrefix]];
 }
 
--(void)wxpayOrder:(XHPayWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;{
+-(void)wxpOrder:(XHPWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;{
     if(req == nil){
-        XHPayKitLog(@"缺少payReq参数");
+        XHPKitLog(@"缺少pReq参数");
         return;
     }
     if(![self.class isWxAppInstalled]){
-        XHPayKitLog(@"未安装微信");
-        NSDictionary *resultDict = @{@"errCode":@(-1000),@"errStr":@"未安装微信"};
-        if(completedBlock) completedBlock(resultDict);
+        XHPKitLog(@"未安装微信");
         return;
     }
     self.wxAppid = req.openID;
@@ -55,19 +53,17 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:openUrl]];
 }
 
--(void)alipayOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock{
+-(void)alipOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock{
     if(orderStr == nil){
-        XHPayKitLog(@"缺少orderStr参数");
+        XHPKitLog(@"缺少orderStr参数");
         return;
     }
     if(schemeStr == nil){
-        XHPayKitLog(@"缺少schemeStr参数");
+        XHPKitLog(@"缺少schemeStr参数");
         return;
     }
     if(![self.class isAliAppInstalled]){
-        XHPayKitLog(@"未安装支付宝");
-        NSDictionary *resultDict = @{@"result":@"",@"resultStatus":@(-1000),@"memo":@"未安装支付宝"};
-        if(completedBlock) completedBlock(resultDict);
+        XHPKitLog(@"未安装某宝");
         return;
     }
     NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":@"SafePay",@"dataString":orderStr};
