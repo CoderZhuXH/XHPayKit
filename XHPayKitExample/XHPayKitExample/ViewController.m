@@ -53,14 +53,17 @@
         
         //微信支付参数,下面7个参数,由后台签名订单后生成,并返回给客服端(与官方SDK一致)
         //注意:请将下面参数设置为你自己真实订单签名后服务器返回参数,便可进行实际支付
+        //以下参数详细介绍见
+        //微信官方文档:https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2
+        
         XHPayWxReq *req = [[XHPayWxReq alloc] init];
-        req.openID = @"";
-        req.partnerId = @"";
-        req.prepayId = @"";
-        req.nonceStr = @"";
-        req.timeStamp = 1518156229;
-        req.package = @"";
-        req.sign = @"";
+        req.openID = @"";//微信开放平台审核通过的应用APPID
+        req.partnerId = @"";//商户号
+        req.prepayId = @"";//交易会话ID
+        req.nonceStr = @"";//随机串，防重发
+        req.timeStamp = 1518156229;//时间戳，防重发
+        req.package = @"";// 扩展字段,暂填写固定值Sign=WXPay
+        req.sign = @"";//签名
         
         //传入订单模型,拉起微信支付
         [[XHPayKit defaultManager] wxpayOrder:req completed:^(NSDictionary *resultDict) {

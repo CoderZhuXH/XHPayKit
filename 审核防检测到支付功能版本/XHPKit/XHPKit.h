@@ -6,6 +6,9 @@
 //  Copyright © 2018年 it7090.com. All rights reserved.
 //  GitHub:https://github.com/CoderZhuXH
 
+//  版本:1.0.1
+//  发布:2018.03.11
+
 //  如果你在使用过程中出现bug,请及时以下面任意一种方式联系我，我会及时修复bug并帮您解决问题。
 //  QQ交流群:537476189
 //  Email:it7090@163.com

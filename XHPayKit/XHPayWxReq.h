@@ -8,21 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+//以下参数详细介绍见
+//微信官方文档:https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2
+
 //发起微信支付的消息模型
 @interface XHPayWxReq : NSObject
-/** 由用户微信号和AppID组成的唯一标识，发送请求时第三方程序必须填写，用于校验微信用户是否换号登录*/
+/** 微信开放平台审核通过的应用APPID*/
 @property (nonatomic, copy) NSString* openID;
-/** 商家向财付通申请的商家id */
+/** 微信支付分配的商户号 */
 @property (nonatomic, copy) NSString *partnerId;
-/** 预支付订单 */
+/** 微信返回的支付交易会话ID */
 @property (nonatomic, copy) NSString *prepayId;
 /** 随机串，防重发 */
 @property (nonatomic, copy) NSString *nonceStr;
 /** 时间戳，防重发 */
 @property (nonatomic, assign) UInt32 timeStamp;
-/** 商家根据财付通文档填写的数据和签名 */
+/** 扩展字段,暂填写固定值Sign=WXPay */
 @property (nonatomic, copy) NSString *package;
-/** 商家根据微信开放平台文档对数据做的签名 */
+/** 签名 */
 @property (nonatomic, copy) NSString *sign;
 @end
 

@@ -72,7 +72,7 @@
     }
     NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":@"SafePay",@"dataString":orderStr};
     NSString *dictEncodeString = dict.xh_jsonString.xh_URLEncodedString;
-    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",AliUrlPrefix,@"alipayclient/?",dictEncodeString];
+    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",AliUrlPrefix,AliUrlClient,dictEncodeString];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -89,7 +89,7 @@
         if(self.completedBlock) self.completedBlock(resultDict);
         return YES;
     }
-    if ([urlString rangeOfString:self.wxAppid].location != NSNotFound){
+    if (self.wxAppid && [urlString rangeOfString:self.wxAppid].location != NSNotFound){
         NSArray *retArray =  [urlString componentsSeparatedByString:@"&"];
         NSInteger errCode = -1;
         NSString *errStr = @"普通错误";
