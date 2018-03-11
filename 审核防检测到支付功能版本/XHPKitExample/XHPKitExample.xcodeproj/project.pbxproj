@@ -7,20 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C275A66205511540049336E /* NSDictionary+XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C275A5D205511540049336E /* NSDictionary+XHPKit.m */; };
+		0C275A67205511540049336E /* NSString+XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C275A5F205511540049336E /* NSString+XHPKit.m */; };
+		0C275A68205511540049336E /* XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C275A61205511540049336E /* XHPKit.m */; };
+		0C275A69205511540049336E /* XHPKitConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C275A63205511540049336E /* XHPKitConst.m */; };
+		0C275A6A205511540049336E /* XHPWxReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C275A65205511540049336E /* XHPWxReq.m */; };
 		60F5D6CE20464B1900DD530F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6CD20464B1900DD530F /* AppDelegate.m */; };
 		60F5D6D120464B1900DD530F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6D020464B1900DD530F /* ViewController.m */; };
 		60F5D6D420464B1900DD530F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F5D6D220464B1900DD530F /* Main.storyboard */; };
 		60F5D6D620464B1900DD530F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 60F5D6D520464B1900DD530F /* Assets.xcassets */; };
 		60F5D6D920464B1900DD530F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F5D6D720464B1900DD530F /* LaunchScreen.storyboard */; };
 		60F5D6DC20464B1900DD530F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6DB20464B1900DD530F /* main.m */; };
-		60F5D6ED20464B5500DD530F /* NSDictionary+XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6E420464B5500DD530F /* NSDictionary+XHPKit.m */; };
-		60F5D6EE20464B5500DD530F /* NSString+XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6E620464B5500DD530F /* NSString+XHPKit.m */; };
-		60F5D6EF20464B5500DD530F /* XHPWxReq.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6E720464B5500DD530F /* XHPWxReq.m */; };
-		60F5D6F020464B5500DD530F /* XHPKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6E920464B5500DD530F /* XHPKit.m */; };
-		60F5D6F120464B5500DD530F /* XHPKitConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F5D6EB20464B5500DD530F /* XHPKitConst.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C275A5C205511540049336E /* NSDictionary+XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XHPKit.h"; sourceTree = "<group>"; };
+		0C275A5D205511540049336E /* NSDictionary+XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XHPKit.m"; sourceTree = "<group>"; };
+		0C275A5E205511540049336E /* NSString+XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XHPKit.h"; sourceTree = "<group>"; };
+		0C275A5F205511540049336E /* NSString+XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XHPKit.m"; sourceTree = "<group>"; };
+		0C275A60205511540049336E /* XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPKit.h; sourceTree = "<group>"; };
+		0C275A61205511540049336E /* XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPKit.m; sourceTree = "<group>"; };
+		0C275A62205511540049336E /* XHPKitConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPKitConst.h; sourceTree = "<group>"; };
+		0C275A63205511540049336E /* XHPKitConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPKitConst.m; sourceTree = "<group>"; };
+		0C275A64205511540049336E /* XHPWxReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPWxReq.h; sourceTree = "<group>"; };
+		0C275A65205511540049336E /* XHPWxReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPWxReq.m; sourceTree = "<group>"; };
 		60F5D6C920464B1900DD530F /* XHPKitExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XHPKitExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		60F5D6CC20464B1900DD530F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		60F5D6CD20464B1900DD530F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -31,16 +41,6 @@
 		60F5D6D820464B1900DD530F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		60F5D6DA20464B1900DD530F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60F5D6DB20464B1900DD530F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		60F5D6E320464B5500DD530F /* NSDictionary+XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+XHPKit.h"; sourceTree = "<group>"; };
-		60F5D6E420464B5500DD530F /* NSDictionary+XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+XHPKit.m"; sourceTree = "<group>"; };
-		60F5D6E520464B5500DD530F /* NSString+XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+XHPKit.h"; sourceTree = "<group>"; };
-		60F5D6E620464B5500DD530F /* NSString+XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+XHPKit.m"; sourceTree = "<group>"; };
-		60F5D6E720464B5500DD530F /* XHPWxReq.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPWxReq.m; sourceTree = "<group>"; };
-		60F5D6E820464B5500DD530F /* XHPKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPKit.h; sourceTree = "<group>"; };
-		60F5D6E920464B5500DD530F /* XHPKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPKit.m; sourceTree = "<group>"; };
-		60F5D6EA20464B5500DD530F /* XHPKitConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPKitConst.h; sourceTree = "<group>"; };
-		60F5D6EB20464B5500DD530F /* XHPKitConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XHPKitConst.m; sourceTree = "<group>"; };
-		60F5D6EC20464B5500DD530F /* XHPWxReq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XHPWxReq.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +54,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C275A5B205511540049336E /* XHPKit */ = {
+			isa = PBXGroup;
+			children = (
+				0C275A5C205511540049336E /* NSDictionary+XHPKit.h */,
+				0C275A5D205511540049336E /* NSDictionary+XHPKit.m */,
+				0C275A5E205511540049336E /* NSString+XHPKit.h */,
+				0C275A5F205511540049336E /* NSString+XHPKit.m */,
+				0C275A60205511540049336E /* XHPKit.h */,
+				0C275A61205511540049336E /* XHPKit.m */,
+				0C275A62205511540049336E /* XHPKitConst.h */,
+				0C275A63205511540049336E /* XHPKitConst.m */,
+				0C275A64205511540049336E /* XHPWxReq.h */,
+				0C275A65205511540049336E /* XHPWxReq.m */,
+			);
+			name = XHPKit;
+			path = ../XHPKit;
+			sourceTree = "<group>";
+		};
 		60F5D6C020464B1900DD530F = {
 			isa = PBXGroup;
 			children = (
-				60F5D6E220464B5500DD530F /* XHPKit */,
+				0C275A5B205511540049336E /* XHPKit */,
 				60F5D6CB20464B1900DD530F /* XHPKitExample */,
 				60F5D6CA20464B1900DD530F /* Products */,
 			);
@@ -85,24 +103,6 @@
 				60F5D6DB20464B1900DD530F /* main.m */,
 			);
 			path = XHPKitExample;
-			sourceTree = "<group>";
-		};
-		60F5D6E220464B5500DD530F /* XHPKit */ = {
-			isa = PBXGroup;
-			children = (
-				60F5D6E320464B5500DD530F /* NSDictionary+XHPKit.h */,
-				60F5D6E420464B5500DD530F /* NSDictionary+XHPKit.m */,
-				60F5D6E520464B5500DD530F /* NSString+XHPKit.h */,
-				60F5D6E620464B5500DD530F /* NSString+XHPKit.m */,
-				60F5D6EC20464B5500DD530F /* XHPWxReq.h */,
-				60F5D6E720464B5500DD530F /* XHPWxReq.m */,
-				60F5D6E820464B5500DD530F /* XHPKit.h */,
-				60F5D6E920464B5500DD530F /* XHPKit.m */,
-				60F5D6EA20464B5500DD530F /* XHPKitConst.h */,
-				60F5D6EB20464B5500DD530F /* XHPKitConst.m */,
-			);
-			name = XHPKit;
-			path = ../XHPKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,14 +176,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60F5D6EE20464B5500DD530F /* NSString+XHPKit.m in Sources */,
+				0C275A69205511540049336E /* XHPKitConst.m in Sources */,
+				0C275A67205511540049336E /* NSString+XHPKit.m in Sources */,
 				60F5D6D120464B1900DD530F /* ViewController.m in Sources */,
 				60F5D6DC20464B1900DD530F /* main.m in Sources */,
-				60F5D6ED20464B5500DD530F /* NSDictionary+XHPKit.m in Sources */,
-				60F5D6EF20464B5500DD530F /* XHPWxReq.m in Sources */,
+				0C275A6A205511540049336E /* XHPWxReq.m in Sources */,
+				0C275A68205511540049336E /* XHPKit.m in Sources */,
+				0C275A66205511540049336E /* NSDictionary+XHPKit.m in Sources */,
 				60F5D6CE20464B1900DD530F /* AppDelegate.m in Sources */,
-				60F5D6F020464B5500DD530F /* XHPKit.m in Sources */,
-				60F5D6F120464B5500DD530F /* XHPKitConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
