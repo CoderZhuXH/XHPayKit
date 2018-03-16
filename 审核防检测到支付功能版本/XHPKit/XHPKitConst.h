@@ -15,12 +15,35 @@
 #define XHPKitLog(...)
 #endif
 
-#define AliUrlSign @"alipay"
-#define AliUrlPrefix  [NSString stringWithFormat:@"%@%@",AliUrlSign,@"://"]
-#define AliUrlClient  [NSString stringWithFormat:@"%@%@",AliUrlSign,@"client/?"]
+#define XHP_AlUrlSign XHP_DecryptStr(XHP_Alip_Str)
+#define XHP_AlUrlPrefix  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"://"]
+#define XHP_AlUrlClient  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"client/?"]
 
-#define WxUrlSign @"weixin"
-#define WxUrlPrefix   [NSString stringWithFormat:@"%@%@",WxUrlSign,@"://"]
+#define XHP_WxUrlSign XHP_DecryptStr(XHP_Wx_Str)
+#define XHP_WxUrlPrefix   [NSString stringWithFormat:@"%@%@",XHP_WxUrlSign,@"://"]
 
+//此宏用来解密字符串
+#define XHP_DecryptStr(Str) [XHPDESEncryption decryptUseDES:Str]
+//此宏用来加密字符串
+#define XHP_EncryptStr(Str) [XHPDESEncryption encryptUseDES:Str]
 
+/**以下为编码后常量字符串-不要修改,其真实含义请查看README文档*/
+/**请使用 XHP_DecryptStr(Str)宏 来读取 下面编码字符串真实值 */
 
+#define XHP_ZFB_Str @"/rn5lmtL9xBhl7pICTTeog=="
+
+#define XHP_ZF_Str @"Hh2HYBtRrqo="
+
+#define XHP_FK_Str @"jRp4OoAGcpY="
+
+#define XHP_Alip_Str @"VPV1g0Ss1b4="
+
+#define XHP_WX_Str @"jicW3N4muT0="
+
+#define XHP_Wx_Str @"V5HStfIGOso="
+
+#define XHP_P @"apbK36sJjkM="
+
+#define XHP_SafeP @"0mz3t48qNFI="
+
+#define XHP_safep @"Z6O7pjD4hcA="

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 it7090.com. All rights reserved.
 //  GitHub:https://github.com/CoderZhuXH
 
-//  版本:1.0.1
-//  发布:2018.03.11
+//  版本:1.0.2
+//  发布:2018.03.16
 
 //  如果你在使用过程中出现bug,请及时以下面任意一种方式联系我，我会及时修复bug并帮您解决问题。
 //  QQ交流群:537476189
@@ -20,8 +20,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "XHPDESEncryption.h"
 #import "XHPWxReq.h"
-
+#import "XHPKitConst.h"
 
 @interface XHPKit : NSObject
 
@@ -35,7 +36,7 @@
 +(BOOL)isWxAppInstalled;
 
 /**
- 是否安装xx宝
+ 是否安装x宝
 
  @return 已安装YES,未安装NO
  */
@@ -50,7 +51,7 @@
 -(void)wxpOrder:(XHPWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;
 
 /**
- 某宝
+ x宝
 
  @param orderStr 签名
  @param schemeStr 本app url scheme
@@ -59,7 +60,7 @@
 -(void)alipOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock;
 
 /**
- 处理微信,某宝跳回商户app携带的结果Url
+ 处理微信,x宝跳回商户app携带的结果Url
  需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用
  @param url 结果Url
  @return 成功返回YES，失败返回NO

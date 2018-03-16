@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "XHPKit"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "不用官方SDK实现微信、支付宝支付."
   s.homepage     = "https://github.com/CoderZhuXH/XHPayKit"
   s.license      = { :type => "MIT", :file => "LICENSE" }

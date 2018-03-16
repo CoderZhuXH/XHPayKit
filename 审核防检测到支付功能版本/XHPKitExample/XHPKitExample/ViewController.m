@@ -4,7 +4,8 @@
 //
 //  Created by zhuxiaohui on 2018/2/28.
 //  Copyright © 2018年 it7090.com. All rights reserved.
-//
+//  项目地址:https://github.com/CoderZhuXH/XHPayKit
+//  README:https://github.com/CoderZhuXH/XHPayKit/blob/master/README.md
 
 #import "ViewController.h"
 #import "XHPKit.h"
@@ -19,10 +20,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+
+    
     [self.view addSubview:self.tableView];
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示:\n请替换支付参数为真实数据,\n便可进行实际支付" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
+
+    NSLog(@"付款\n%@",XHP_EncryptStr(@"付款"));
 }
 
 #pragma mark - tableView
@@ -98,7 +103,7 @@
 #pragma mark - lazy
 -(NSArray *)dataArray{
     if(!_dataArray){
-        _dataArray = @[@"微信支付",@"支付宝支付"];
+        _dataArray = @[XHP_DecryptStr(XHP_WX_Str), XHP_DecryptStr(XHP_ZFB_Str)];
     }
     return _dataArray;
 }

@@ -9,7 +9,7 @@
 #import "XHPKit.h"
 #import "NSString+XHPKit.h"
 #import "NSDictionary+XHPKit.h"
-#import "XHPKitConst.h"
+
 
 @interface XHPKit()
 @property (nonatomic, copy) void(^completedBlock)(NSDictionary *resultDict);
@@ -27,11 +27,11 @@
 }
 
 +(BOOL)isWxAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WxUrlPrefix]];
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:XHP_WxUrlPrefix]];
 }
 
 +(BOOL)isAliAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:AliUrlPrefix]];
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:XHP_AlUrlPrefix]];
 }
 
 -(void)wxpOrder:(XHPWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;{
@@ -46,7 +46,7 @@
     self.wxAppid = req.openID;
     req.package = [req.package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
     NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%d&sign=%@&signType=%@",req.nonceStr,req.package,req.partnerId,req.prepayId,(unsigned int)req.timeStamp,req.sign,@"SHA1"];
-    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,req.openID,parameter];
+    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/%@/?%@",XHP_WxUrlPrefix,req.openID,XHP_DecryptStr(XHP_P),parameter];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -63,12 +63,12 @@
         return;
     }
     if(![self.class isAliAppInstalled]){
-        XHPKitLog(@"未安装某宝");
+        XHPKitLog(@"未安装x宝");
         return;
     }
-    NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":@"SafePay",@"dataString":orderStr};
+    NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":XHP_DecryptStr(XHP_SafeP),@"dataString":orderStr};
     NSString *dictEncodeString = dict.xh_jsonString.xh_URLEncodedString;
-    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",AliUrlPrefix,AliUrlClient,dictEncodeString];
+    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",XHP_AlUrlPrefix,XHP_AlUrlClient,dictEncodeString];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -77,7 +77,7 @@
 
 -(BOOL)handleOpenURL:(NSURL *)url{
     NSString *urlString = url.absoluteString.xh_URLDecodedString;
-    if ([urlString rangeOfString:@"//safepay/"].location != NSNotFound){
+    if ([urlString rangeOfString:[NSString stringWithFormat:@"//%@/",XHP_DecryptStr(XHP_safep)]].location != NSNotFound){
         NSString *resultStr = [[urlString componentsSeparatedByString:@"?"] lastObject];
         resultStr = [resultStr stringByReplacingOccurrencesOfString:@"ResultStatus" withString:@"resultStatus"];
         NSDictionary *result = resultStr.xh_dictionary;

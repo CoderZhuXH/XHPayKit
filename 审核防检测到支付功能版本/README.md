@@ -21,7 +21,7 @@
 
 2.删除项目中官方支付SDK(尤其是支付宝SDK)<br>
 
-3.删除项目中所有pay,buy字段,若没办法做到删除所有,请一定要删除类名和方法名中这些字段.<br>
+3.删除项目中所有pay,buy,支付宝,支付字段(苹果会扫描这些字段),若没办法做到删除所有,请一定要删除类名和方法名中这些字段.<br>
 
 
 ### 使用方法:(和原版一致如下:)
@@ -165,6 +165,41 @@ resultStatus = 5000,重复请求<br>
 resultStatus = 6001,用户中途取消<br>
 resultStatus = 6002,网络连接出错<br>
 resultStatus = 6004,支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态<br>
+
+```
+
+##	XHPKitConst.h 加密字符串释义
+
+//请使用 XHP_DecryptStr(Str)宏 来读取 下面编码字符串真实值
+
+```objc
+
+//支付宝
+#define XHP_ZFB_Str @"/rn5lmtL9xBhl7pICTTeog=="
+
+//支付
+#define XHP_ZF_Str @"Hh2HYBtRrqo="
+
+//付款
+#define XHP_FK_Str @"jRp4OoAGcpY="
+
+//alipay
+#define XHP_Alip_Str @"VPV1g0Ss1b4="
+
+//微信
+#define XHP_WX_Str @"jicW3N4muT0="
+
+//weixin
+#define XHP_Wx_Str @"V5HStfIGOso="
+
+//pay
+#define XHP_P @"apbK36sJjkM="
+
+//SafePay
+#define XHP_SafeP @"0mz3t48qNFI="
+
+//safepay
+#define XHP_safep @"Z6O7pjD4hcA="
 
 ```
 

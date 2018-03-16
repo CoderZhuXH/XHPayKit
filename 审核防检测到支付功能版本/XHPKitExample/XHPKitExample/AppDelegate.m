@@ -4,7 +4,8 @@
 //
 //  Created by zhuxiaohui on 2018/2/28.
 //  Copyright © 2018年 it7090.com. All rights reserved.
-//
+//  项目地址:https://github.com/CoderZhuXH/XHPayKit
+//  README:https://github.com/CoderZhuXH/XHPayKit/blob/master/README.md
 
 #import "AppDelegate.h"
 #import "XHPKit.h"
