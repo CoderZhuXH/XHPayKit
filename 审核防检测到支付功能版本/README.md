@@ -3,9 +3,9 @@
 ### 技术交流群(群号:537476189)
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://github.com/CoderZhuXH/XHPayKit)
-[![Version Status](https://img.shields.io/cocoapods/v/XHPKit.svg?style=flat)]
-[![Support](https://img.shields.io/badge/support-iOS7%2B-brightgreen.svg)]
-[![Pod Platform](https://img.shields.io/cocoapods/p/XHPKit.svg?style=flat)]
+![Version Status](https://img.shields.io/cocoapods/v/XHPKit.svg?style=flat)
+![Support](https://img.shields.io/badge/support-iOS7%2B-brightgreen.svg)
+![Pod Platform](https://img.shields.io/cocoapods/p/XHPKit.svg?style=flat)
 [![Pod License](https://img.shields.io/cocoapods/l/XHPKit.svg?style=flat)](https://github.com/CoderZhuXH/XHPayKit/blob/master/LICENSE)
 
 ### 温馨提示:作弊不是长久之计,内购才是正途
