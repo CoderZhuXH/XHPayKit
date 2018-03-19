@@ -15,12 +15,12 @@
 #define XHPayKitLog(...)
 #endif
 
-#define AliUrlSign @"alipay"
-#define AliUrlPrefix  [NSString stringWithFormat:@"%@%@",AliUrlSign,@"://"]
-#define AliUrlClient  [NSString stringWithFormat:@"%@%@",AliUrlSign,@"client/?"]
+#define XHP_AlUrlSign @"alipay"
+#define XHP_AlUrlPrefix  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"://"]
+#define XHP_AlUrlClient  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"client/?"]
 
-#define WxUrlSign @"weixin"
-#define WxUrlPrefix   [NSString stringWithFormat:@"%@%@",WxUrlSign,@"://"]
+#define XHP_WxUrlSign @"weixin"
+#define XHP_WxUrlPrefix   [NSString stringWithFormat:@"%@%@",XHP_WxUrlSign,@"://"]
 
 
 

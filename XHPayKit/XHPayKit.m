@@ -27,11 +27,11 @@
 }
 
 +(BOOL)isWxAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:WxUrlPrefix]];
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:XHP_WxUrlPrefix]];
 }
 
 +(BOOL)isAliAppInstalled{
-    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:AliUrlPrefix]];
+    return [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:XHP_AlUrlPrefix]];
 }
 
 -(void)wxpayOrder:(XHPayWxReq *)req completed:(void(^)(NSDictionary *resultDict))completedBlock;{
@@ -41,14 +41,12 @@
     }
     if(![self.class isWxAppInstalled]){
         XHPayKitLog(@"未安装微信");
-        NSDictionary *resultDict = @{@"errCode":@(-1000),@"errStr":@"未安装微信"};
-        if(completedBlock) completedBlock(resultDict);
         return;
     }
     self.wxAppid = req.openID;
     req.package = [req.package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
     NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%d&sign=%@&signType=%@",req.nonceStr,req.package,req.partnerId,req.prepayId,(unsigned int)req.timeStamp,req.sign,@"SHA1"];
-    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",WxUrlPrefix,req.openID,parameter];
+    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/pay/?%@",XHP_WxUrlPrefix,req.openID,parameter];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -66,13 +64,11 @@
     }
     if(![self.class isAliAppInstalled]){
         XHPayKitLog(@"未安装支付宝");
-        NSDictionary *resultDict = @{@"result":@"",@"resultStatus":@(-1000),@"memo":@"未安装支付宝"};
-        if(completedBlock) completedBlock(resultDict);
         return;
     }
     NSDictionary *dict = @{@"fromAppUrlScheme":schemeStr,@"requestType":@"SafePay",@"dataString":orderStr};
     NSString *dictEncodeString = dict.xh_jsonString.xh_URLEncodedString;
-    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",AliUrlPrefix,AliUrlClient,dictEncodeString];
+    NSString *openUrl = [NSString stringWithFormat:@"%@%@%@",XHP_AlUrlPrefix,XHP_AlUrlClient,dictEncodeString];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
