@@ -46,7 +46,7 @@
     self.wxAppid = req.openID;
     req.package = [req.package stringByReplacingOccurrencesOfString:@"=" withString:@"%3D"];
     NSString * parameter = [NSString stringWithFormat:@"nonceStr=%@&package=%@&partnerId=%@&prepayId=%@&timeStamp=%d&sign=%@&signType=%@",req.nonceStr,req.package,req.partnerId,req.prepayId,(unsigned int)req.timeStamp,req.sign,@"SHA1"];
-    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/%@/?%@",XHP_WxUrlPrefix,req.openID,XHP_DecryptStr(XHP_P),parameter];
+    NSString * openUrl = [NSString stringWithFormat:@"%@app/%@/%@/?%@",XHP_WxUrlPrefix,req.openID,XHP_DecryptStr(XHP_p),parameter];
     if(completedBlock){
         self.completedBlock = [completedBlock copy];
     }
@@ -77,7 +77,7 @@
 
 -(BOOL)handleOpenURL:(NSURL *)url{
     NSString *urlString = url.absoluteString.xh_URLDecodedString;
-    if ([urlString rangeOfString:[NSString stringWithFormat:@"//%@/",XHP_DecryptStr(XHP_safep)]].location != NSNotFound){
+    if ([urlString xh_containsString:[NSString stringWithFormat:@"//%@/",XHP_DecryptStr(XHP_safep)]]){
         NSString *resultStr = [[urlString componentsSeparatedByString:@"?"] lastObject];
         resultStr = [resultStr stringByReplacingOccurrencesOfString:@"ResultStatus" withString:@"resultStatus"];
         NSDictionary *result = resultStr.xh_dictionary;
@@ -85,12 +85,12 @@
         if(self.completedBlock) self.completedBlock(resultDict);
         return YES;
     }
-    if (self.wxAppid && [urlString rangeOfString:self.wxAppid].location != NSNotFound){
+    if (self.wxAppid && [urlString xh_containsString:self.wxAppid] && [urlString xh_containsString:[NSString stringWithFormat:@"//%@/",XHP_DecryptStr(XHP_p)]]){
         NSArray *retArray =  [urlString componentsSeparatedByString:@"&"];
         NSInteger errCode = -1;
         NSString *errStr = @"普通错误";
         for (NSString *retStr in retArray) {
-            if([retStr containsString:@"ret="]){
+            if([retStr xh_containsString:@"ret="]){
                 errCode = [[retStr stringByReplacingOccurrencesOfString:@"ret=" withString:@""] integerValue];
             }
         }

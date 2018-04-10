@@ -16,4 +16,6 @@
 
 @property (nonatomic, copy,readonly) NSString *xh_URLEncodedString;
 
+-(BOOL)xh_containsString:(NSString *)string;
+
 @end

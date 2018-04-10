@@ -77,7 +77,7 @@
 
 -(BOOL)handleOpenURL:(NSURL *)url{
     NSString *urlString = url.absoluteString.xh_URLDecodedString;
-    if ([urlString rangeOfString:@"//safepay/"].location != NSNotFound){
+    if ([urlString xh_containsString:@"//safepay/"]){
         NSString *resultStr = [[urlString componentsSeparatedByString:@"?"] lastObject];
         resultStr = [resultStr stringByReplacingOccurrencesOfString:@"ResultStatus" withString:@"resultStatus"];
         NSDictionary *result = resultStr.xh_dictionary;
@@ -85,12 +85,12 @@
         if(self.completedBlock) self.completedBlock(resultDict);
         return YES;
     }
-    if (self.wxAppid && [urlString rangeOfString:self.wxAppid].location != NSNotFound){
+    if (self.wxAppid && [urlString xh_containsString:self.wxAppid] && [urlString xh_containsString:@"//pay/"]){
         NSArray *retArray =  [urlString componentsSeparatedByString:@"&"];
         NSInteger errCode = -1;
         NSString *errStr = @"普通错误";
         for (NSString *retStr in retArray) {
-            if([retStr containsString:@"ret="]){
+            if([retStr xh_containsString:@"ret="]){
                 errCode = [[retStr stringByReplacingOccurrencesOfString:@"ret=" withString:@""] integerValue];
             }
         }

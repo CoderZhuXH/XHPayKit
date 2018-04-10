@@ -15,11 +15,11 @@
 #define XHPKitLog(...)
 #endif
 
-#define XHP_AlUrlSign XHP_DecryptStr(XHP_Alip_Str)
+#define XHP_AlUrlSign XHP_DecryptStr(XHP_alip)
 #define XHP_AlUrlPrefix  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"://"]
 #define XHP_AlUrlClient  [NSString stringWithFormat:@"%@%@",XHP_AlUrlSign,@"client/?"]
 
-#define XHP_WxUrlSign XHP_DecryptStr(XHP_Wx_Str)
+#define XHP_WxUrlSign XHP_DecryptStr(XHP_wx)
 #define XHP_WxUrlPrefix   [NSString stringWithFormat:@"%@%@",XHP_WxUrlSign,@"://"]
 
 //此宏用来解密字符串
@@ -36,13 +36,13 @@
 
 #define XHP_FK_Str @"jRp4OoAGcpY="
 
-#define XHP_Alip_Str @"VPV1g0Ss1b4="
-
 #define XHP_WX_Str @"jicW3N4muT0="
 
-#define XHP_Wx_Str @"V5HStfIGOso="
+#define XHP_alip @"VPV1g0Ss1b4="
 
-#define XHP_P @"apbK36sJjkM="
+#define XHP_wx @"V5HStfIGOso="
+
+#define XHP_p @"apbK36sJjkM="
 
 #define XHP_SafeP @"0mz3t48qNFI="
 

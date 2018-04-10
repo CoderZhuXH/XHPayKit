@@ -29,4 +29,9 @@
     NSString *decodedString=(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(NULL, (__bridge CFStringRef)string, CFSTR(""), CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
     return decodedString;
 }
+
+-(BOOL)xh_containsString:(NSString *)string{
+    if(string == nil) return NO;
+    return [self rangeOfString:string].location != NSNotFound;
+}
 @end

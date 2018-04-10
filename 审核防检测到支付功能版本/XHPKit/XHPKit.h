@@ -6,8 +6,8 @@
 //  Copyright © 2018年 it7090.com. All rights reserved.
 //  GitHub:https://github.com/CoderZhuXH
 
-//  版本:1.0.2
-//  发布:2018.03.16
+//  版本:1.0.3
+//  发布:2018.04.10
 
 //  如果你在使用过程中出现bug,请及时以下面任意一种方式联系我，我会及时修复bug并帮您解决问题。
 //  QQ交流群:537476189
@@ -60,7 +60,7 @@
 -(void)alipOrder:(NSString *)orderStr fromScheme:(NSString *)schemeStr completed:(void(^)(NSDictionary *resultDict))completedBlock;
 
 /**
- 处理微信,x宝跳回商户app携带的结果Url
+ 处理微信,x宝跳回app携带的结果Url
  需要在 application:openURL:sourceApplication:annotation:或者application:handleOpenURL中调用
  @param url 结果Url
  @return 成功返回YES，失败返回NO

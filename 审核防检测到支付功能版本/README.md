@@ -189,17 +189,17 @@ resultStatus = 6004,支付结果未知（有可能已经支付成功），请查
 //付款
 #define XHP_FK_Str @"jRp4OoAGcpY="
 
-//alipay
-#define XHP_Alip_Str @"VPV1g0Ss1b4="
-
 //微信
 #define XHP_WX_Str @"jicW3N4muT0="
 
+//alipay
+#define XHP_alip @"VPV1g0Ss1b4="
+
 //weixin
-#define XHP_Wx_Str @"V5HStfIGOso="
+#define XHP_wx @"V5HStfIGOso="
 
 //pay
-#define XHP_P @"apbK36sJjkM="
+#define XHP_p @"apbK36sJjkM="
 
 //SafePay
 #define XHP_SafeP @"0mz3t48qNFI="
