@@ -24,6 +24,7 @@
 2.导入此库,并请将 weixin 、 alipay 字段添加到info.plist白名单<br>
 3.并添加两个URL Schemes 如图:<br>
 ![](PNG/URLSchemes.png)
+4.XHPayKit在未安装支付宝/微信情况下,不会拉起网页支付<br>
 
 
 ### 运行Demo注意事项:
