@@ -1,6 +1,7 @@
 
 
 ### 技术交流群(群号:537476189)
+![](PNG/qqgroup.png)
 
 [![AppVeyor](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg?maxAge=2592000)](https://github.com/CoderZhuXH/XHPayKit)
 ![Version Status](https://img.shields.io/cocoapods/v/XHPKit.svg?style=flat)

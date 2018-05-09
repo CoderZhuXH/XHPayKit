@@ -10,6 +10,7 @@
 ![](PNG/weixin_alipay.png)
 
 ### 技术交流群(群号:537476189)
+![](PNG/qqgroup.png)
 
 ##	写在最前
 
