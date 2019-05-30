@@ -9,7 +9,12 @@
 ![Pod Platform](https://img.shields.io/cocoapods/p/XHPKit.svg?style=flat)
 [![Pod License](https://img.shields.io/cocoapods/l/XHPKit.svg?style=flat)](https://github.com/CoderZhuXH/XHPayKit/blob/master/LICENSE)
 
+
 ### 温馨提示:作弊不是长久之计,内购才是正途
+
+##  温馨提示
+1.使用XHPayKit走不通支付流程的,基本都是所传支付参数有问题,建议你先使用官方SDK调通支付流程后,再删除官方SDK使用XHPaykit.<br>
+2.XHPaykit和官方SDK有类似接口,可以实现快速替换.
 
 ### 写在最前:
 
@@ -175,6 +180,16 @@ resultStatus = 6002,网络连接出错<br>
 resultStatus = 6004,支付结果未知（有可能已经支付成功），请查询商户订单列表中订单的支付状态<br>
 
 ```
+
+
+## 2019.05.30注:过审进阶方案(我现在采用这种方案)-->支付宝和微信支付去SDK化(不用官方SDK或者XHPkit,同样可以掉起微信APP支付和支付宝APP支付)原理很简单:
+
+1. 官方SDK和XHPKit内部都是将支付参数转为-->支付url,通过openURL的方式传参给支付宝/微信,掉起支付宝/微信APP支付 <br>
+2. 完全可以将支付参数转化-->支付url,这个过程放在后台,至于后台怎么实现这个转化过程,你可以看下XHPaykit的源码,将转化原理告诉后台,由后台来实现转化过程.<br>
+3. 唯一的区别就是:从开始的APP传支付参数给SDK或者XHPaykit拉起支付 变为 APP传支付参数给后台,后台返回支付url,我们openURL拉起支付宝/微信支付<br>
+4. 此方法配合H5页面使用,可以做到项目中基本无任何支付宝微信支付的痕迹,这也是现在我采用的方案.<br>
+
+
 
 ##	XHPKitConst.h 加密字符串释义
 
