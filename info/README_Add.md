@@ -21,5 +21,5 @@
 ### 可以删掉info.plist白名单中alipay字段
 ### 删除后不影响openURL方式拉起第三方APP
 ### 但不能通过canOpenURL方式检测有没安装某APP(canOpenURL会直接返回NO),检测有没安装某APP应该可以通过其他方式来判断
-### 支付宝官方SDK也没有要求在 info.plist中添加alipay字段.
+
 
